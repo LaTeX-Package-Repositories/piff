@@ -1,6 +1,21 @@
 # piff
 
-Packages maintained by Robin Fairbairns, originally by Mike Piff.
+## Original Notice
+
+Mike Piff has moved to a job where he has no further use
+for (La)TeX, so these packages are no longer maintained.
+
+Any user who feels he has something to contribute to any of
+the packages should contact the CTAN team, to be entered in the
+CTAN catalogue as "current maintainer" of the package.
+
+Robin Fairbairns
+
+For the CTAN team
+
+## LaTeX Package Repositories
+The packages are currently maintained at the LaTeX Package Repositories GitHub.
+
 
 ## duplicat
 
