@@ -1,0 +1,15 @@
+#!/bin/bash
+
+sed -i README.md -e "s/Date: ....-..-../Date: $(date -I)/"
+
+for i in *-doc.tex
+do
+pdflatex $i
+pdflatex $i
+done
+
+cd ..
+
+zip piff-ctan.zip piff/README.md piff/*-doc.tex piff/*-doc.tex piff/*-doc.pdf piff/*.sty
+
+mv piff-ctan.zip piff

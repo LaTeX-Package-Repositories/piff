@@ -26,13 +26,74 @@
 % Command "\qed" is set up to flush "\qedtext" right; "\qedtext" defaults
 % to a square, but can be re-defined as "QED" or whatever.
 %
-% M.Piff@shef.ac.uk
+% Original author: Mike Piff
+
+% https://github.com/LaTeX-Package-Repositories/piff
+
 %
 % This file is placed in the public domain.  No provision is made for
 % support of the use of the facilities herein.
 %
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesPackage{newproof}
+
+\newif\ifDocumentMetadata
+\IfDocumentMetadataT{\DocumentMetadatatrue}
+
+\ifDocumentMetadata
+
+%--------------- new code -----------------
+
+\ExplSyntaxOn
+
+\newcommand\newproof[3]{
+%
+% put the optional argument in the note key
+%
+  \DeclareDocumentEnvironment{#1}{ ={note}o }
+     {
+%
+% test if \qedtext is defined and if so put it in \qedsymbol
+%
+       \cs_if_exist:NT \qedtext { \def\qedsymbol{\qedtext} }
+       %
+% rest is std for proof
+%
+       \pushQED{#3}
+       \ParseLaTeXeTheoremlike {#1} \BooleanTrue {##1}  }
+     { \popQED \BlockEnvEnd }
+%
+% define its blockenv instance
+%
+   \DeclareInstance{blockenv}{#1}{std}{
+     name                 = #1
+    ,tag-name             = \UseStructureName{block/proof}
+    ,tagging-recipe       = standalone
+    ,standalone           = true
+    ,transparent-level    = true
+    ,block-instance       = proof
+    ,inner-instance-type  = captionedtext
+    ,inner-instance       = #1
+%    ,para-instance        = justify
+  }
+%
+% define its captiontext instance
+%
+  \DeclareInstance{captionedtext}{#1}{proof}{
+    ,title         = #2
+    ,order         = {title,separator,note}
+    ,caption-decls = \bfseries
+    ,note-format   = (##1)        % that's actually also the default
+  }
+}
+\newproof{proof}{Proof}{\qed}     % overwrite our own definition
+
+\ExplSyntaxOff
+
+\else  % old 2e definitions
+
+%--------------- original code -----------------
+
 \newcommand{\newproof}[3]{
    \newenvironment{#1}[1][]%
    {%
@@ -57,4 +118,4 @@
 \RequirePackage{amsfonts}
 \DeclareMathSymbol{\square}       {\mathord}{AMSa}{"03}
 
-
+\fi

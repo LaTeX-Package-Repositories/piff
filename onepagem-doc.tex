@@ -1,7 +1,5 @@
 \documentclass[pagesize=auto, DIV=10, fontsize=14pt, parskip=full]{scrartcl}
 
-\usepackage{fixltx2e}
-\usepackage{etex}
 \usepackage{xspace}
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
@@ -19,7 +17,7 @@
 \addtokomafont{title}{\rmfamily}
 
 \title{The \pkg{onepagem} package\thanks{This manual corresponds to \pkg{onepagem.sty}~v1.01a, dated~28 Mar 1996.}}
-\author{Mike Piff\thanks{\mail{M.Piff@sheffield.ac.uk}}}
+\author{Mike Piff\thanks{https://github.com/LaTeX-Package-Repositories/piff}}
 \date{28 Mar 1996}
 
 
@@ -29,7 +27,7 @@
 
 If the document has only one page, omit page number. (onepagempty)
 The page number must be produced by means of \cmd{\thepage}.
-Needs two passes through \LaTeX\ to work, as it writes to the {\tt .aux} file.
+Needs two passes through \LaTeX\ to work, as it writes to the {\ttfamily .aux} file.
 
 The first version was a joke put on CTAN to illustrate how useful
 \cmd{\AtEndDocument} is.  This one works\dots

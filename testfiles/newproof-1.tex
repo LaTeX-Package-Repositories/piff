@@ -1,0 +1,25 @@
+\DocumentMetadata{ tagging=on }
+
+\documentclass{article}
+
+\usepackage{kantlipsum}
+\usepackage{newproof}
+
+\begin{document}
+
+\newproof{foo}{Foo}{\qed}
+\newproof{baz}{Baz}{\qed}
+
+\begin{proof}[B. L. User]
+  A named proof.
+\end{proof}
+
+\begin{foo}
+ \kant[1]
+\end{foo}
+
+\begin{baz}[of theorem 1]
+ \kant[2]  Some more text.
+\end{baz}
+
+\end{document}

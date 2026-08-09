@@ -1,5 +1,10 @@
 # piff
 
+Licence: Public Domain
+
+Date: 2026-08-09
+
+
 ## Original Notice
 
 Mike Piff has moved to a job where he has no further use
